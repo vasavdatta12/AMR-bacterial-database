@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=yes" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bacterial Database</title>
+    <meta name="author" content="Vasavdatta">
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/searchbuilder/1.3.0/css/searchBuilder.dataTables.min.css">
+</head>
+
+<body style="background-color:#bd7c7c;">
+    
+    <div class="container-fluid">
+        
+        <main class="row">
+            <div class="col">
+
+                <h1 style="font-size:5vw"><center>Bacterial Database</center></h1>
+                <br>
+
+                <h2 style="font-size:2vw"> <center> Antibiotic Resistant Bacterial Database</center></h2>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                
+
+               
+
+                <div id="table-container"></div>
+            </div>
+        </main>
+        <footer class="row">
+            <div class="col">
+                <hr>
+                
+            </div>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.csv.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="js/csv_to_html_table.js"></script>
+
+    <script>
+        function format_link(link) {
+            if (link)
+                return "<a href='" + link + "' target='_blank'>" + link + "</a>";
+            else return "";
+        }
+
+        CsvToHtmlTable.init({
+            csv_path: "Bacteria.csv",
+            element: "table-container",
+            allow_download: true,
+            csv_options: {
+                separator: ",",
+                delimiter: '"'
+            },
+            datatables_options: {
+                paging: false
+            },
+            custom_formatting: [
+                [89, format_link]
+            ]
+        });
+    </script>
+</body>
+
+</html>
